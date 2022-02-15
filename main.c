@@ -40,14 +40,8 @@ void ensure_space(MinHeap *root) {
   
   if(root->size >= capacity) {
     int new_capacity = (capacity * 2);
-    int *temp = calloc(new_capacity, sizeof(int));
-    memcpy(temp, root->data, capacity * sizeof(int));
-
-    root->data = calloc(new_capacity, sizeof(int));
-    memcpy(root->data, temp, new_capacity * sizeof(int));
-    
+    root->data = realloc(root->data, new_capacity * sizeof(int));
     root->capacity = new_capacity;
-    free(temp);
   }
 }
 
